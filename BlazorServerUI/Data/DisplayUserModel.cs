@@ -1,8 +1,9 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using DataAccess.dbo.Models;
+using System.ComponentModel.DataAnnotations;
 
 namespace BlazorServerUI.Data;
 
-public class DisplayUserModel
+public class DisplayUserModel : IUserModel
 {
     [Required]
     public int Id { get; set; }

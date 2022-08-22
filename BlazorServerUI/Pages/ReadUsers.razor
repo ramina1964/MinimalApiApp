@@ -1,0 +1,60 @@
+﻿@page "/readusers"
+@using DataAccess.dbo.Data
+@using DataAccess.dbo.DbAccess
+@using DataAccess.dbo.Models
+
+@inject ISqlDataAccess sqlDataAccess
+@inject IUserData userData
+
+@* Todo: Remove duplication of ConnectionStrings in appsettings.json by using the same property in MinimalApi/appsettings.json *@
+
+<h3>Read Users</h3>
+
+@if (users is null)
+{
+    <h4>Loading ...</h4>
+}
+else
+{
+    <div class="row">
+        <div class="col-md-8">
+            <table class="table table-striped">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Id</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Date of Birth</th>
+                        <th>Email Address</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var u in users)
+                    {
+                        <tr>
+                            <td>@u.Id</td>
+                            <td>@u.FirstName</td>
+                            <td>@u.LastName</td>
+                            <td>@u.DoB</td>
+                            <td>@u.EmailAddress</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+}
+
+@code {
+    protected override async Task OnParametersSetAsync()
+    {
+        var u = (await userData.GetAll()).ToList<IUserModel>();
+        if (u is not null)
+        {
+            users = u;
+        }
+    }
+
+    private List<IUserModel> users = new List<IUserModel>();
+}

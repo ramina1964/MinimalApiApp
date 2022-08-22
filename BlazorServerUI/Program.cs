@@ -1,11 +1,17 @@
-using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Web;
+using BlazorServerUI.Data;
+using DataAccess.dbo.Data;
+using DataAccess.dbo.DbAccess;
+using DataAccess.dbo.Models;
+
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
 builder.Services.AddServerSideBlazor();
+builder.Services.AddTransient<IUserData, UserData>();
+builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
+builder.Services.AddScoped<IUserModel, DisplayUserModel>();
 
 var app = builder.Build();
 

@@ -1,6 +1,6 @@
 ﻿namespace DataAccess.dbo.Models;
 
-public class UserModel
+public class UserModel : IUserModel
 {
     public int Id { get; set; }
 
