@@ -3,7 +3,6 @@ using DataAccess.dbo.Data;
 using DataAccess.dbo.DbAccess;
 using DataAccess.dbo.Models;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

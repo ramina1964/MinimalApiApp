@@ -3,11 +3,9 @@
 public class UserData : IUserData
 {
     public UserData(ISqlDataAccess db) => _db = db;
-
-    public Task<IEnumerable<UserModel>> GetAll()
-    {
-        return _db.LoadData<UserModel, dynamic>("spUser_GetAll", new { });
-    }
+    
+    public Task<IEnumerable<UserModel>> GetAll() =>
+        _db.LoadData<UserModel, dynamic>("spUser_GetAll", new { });
 
     public async Task<UserModel?> Get(int userId)
     {
@@ -21,7 +19,7 @@ public class UserData : IUserData
         return result;
     }
 
-    public async Task<int> InsertUser(UserModel user)
+    public async Task<int> InsertUser(UserModel user) 
     {
         var userId = user.Id;
         if (user.Id != 0)
