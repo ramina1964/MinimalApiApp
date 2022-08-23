@@ -1,8 +1,8 @@
 ﻿namespace DataAccess.dbo.Data;
 
-public class UserData : IUserData
+public class UserService : IUserService
 {
-    public UserData(ISqlDataAccess db) => _db = db;
+    public UserService(ISqlDataAccess db) => _db = db;
     
     public Task<IEnumerable<UserModel>> GetAll() =>
         _db.LoadData<UserModel, dynamic>("spUser_GetAll", new { });

@@ -13,6 +13,26 @@ public partial class ReadUsers
         }
     }
 
-    private List<IUserModel> _users = new();
+    private void UpdateUser(int id)
+    {
+        idToUpdate = id;
+        showEditForm = true;
+    }
 
+    private void HandleOnUpdate(IUserModel user)
+    {
+        showEditForm = false;
+        var userToUpdate = _users.Where(x => x.Id == user.Id).FirstOrDefault();
+        if (userToUpdate is not null)
+        {
+            userToUpdate.FirstName = user.FirstName;
+            userToUpdate.LastName = user.LastName;
+            userToUpdate.DoB = user.DoB;
+            userToUpdate.EmailAddress = user.EmailAddress;
+        }
+    }
+
+    private List<IUserModel> _users = new();
+    private bool showEditForm = false;
+    private int idToUpdate = 0;
 }

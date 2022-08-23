@@ -4,9 +4,7 @@
 @using DataAccess.dbo.Models
 
 @inject ISqlDataAccess sqlDataAccess
-@inject IUserData userData
-
-@* Todo: Remove duplication of ConnectionStrings in appsettings.json by using the same property in MinimalApi/appsettings.json *@
+@inject IUserService userData
 
 <h3>Read Users</h3>
 
@@ -26,6 +24,7 @@ else
                         <th>Last Name</th>
                         <th>Date of Birth</th>
                         <th>Email Address</th>
+                        <th></th>
                     </tr>
                 </thead>
 
@@ -38,11 +37,19 @@ else
                             <td>@u.LastName</td>
                             <td>@u.DoB</td>
                             <td>@u.EmailAddress</td>
+                            <td>
+                                <button class="btn btn-primary" @onclick="(() => UpdateUser(u.Id))">Update</button>
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
         </div>
+
+        <div class="col-md-4">
+            @if (showEditForm) {
+                <UpdateUser Id="@idToUpdate" OnUpdate="HandleOnUpdate"></UpdateUser>
+            }
+        </div>
     </div>
 }
-
