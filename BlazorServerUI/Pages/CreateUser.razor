@@ -1,0 +1,57 @@
+﻿@page "/createuser"
+@using BlazorServerUI.Data
+@using DataAccess.dbo.Data
+@using DataAccess.dbo.DbAccess
+@using DataAccess.dbo.Models
+
+@inject IUserData dataservice
+
+<h3>Create User</h3>
+<br />
+
+<div class="row">
+    <div class="col-md-4">
+
+        <EditForm Model="displayUser" OnValidSubmit="HandleValidSubmit">
+            <DataAnnotationsValidator />
+            <ValidationSummary />
+
+            <div>
+                <label>First Name</label>
+                <InputText class="form-control" @bind-Value="displayUser.FirstName" />
+            </div>
+            <br />
+
+            <div>
+                <label>Last Name</label>
+                <InputText class="form-control" @bind-Value="displayUser.LastName" />
+            </div>
+            <br />
+
+            <div>
+                <label>Date of Birth</label>
+                <InputDate class="form-control" @bind-Value="displayUser.DoB" />
+            </div>
+            <br />
+
+            <div>
+                <label>Email Address</label>
+                <InputText class="form-control" @bind-Value="displayUser.EmailAddress" />
+            </div>
+            <br />
+
+            <button class="btn btn-primary" type="submit">Submit</button>
+        </EditForm>
+    </div>
+</div>
+
+@code {
+
+    private async Task HandleValidSubmit()
+    {
+        await dataservice.InsertUser(displayUser);
+        displayUser = new DisplayUserModel();
+    }
+
+    private IUserModel displayUser = new DisplayUserModel();
+}

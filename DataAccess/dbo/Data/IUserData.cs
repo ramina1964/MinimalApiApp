@@ -6,9 +6,9 @@ public interface IUserData
 
     Task<UserModel?> Get(int id);
 
-    Task<int> InsertUser(UserModel user);
+    Task<int> InsertUser(IUserModel user);
 
-    Task<int> UpdateUser(UserModel user);
+    Task<int> UpdateUser(IUserModel user);
 
     Task<int> DeleteUser(int id);
 }

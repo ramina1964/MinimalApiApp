@@ -19,7 +19,7 @@ public class UserData : IUserData
         return result;
     }
 
-    public async Task<int> InsertUser(UserModel user) 
+    public async Task<int> InsertUser(IUserModel user) 
     {
         var userId = user.Id;
         if (user.Id != 0)
@@ -35,7 +35,7 @@ public class UserData : IUserData
         return noOfRows;
     }
 
-    public async Task<int> UpdateUser(UserModel user)
+    public async Task<int> UpdateUser(IUserModel user)
     {
         var userId = user.Id;
         if (user.Id <= 0)
