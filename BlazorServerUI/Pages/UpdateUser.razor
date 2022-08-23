@@ -1,8 +1,4 @@
-﻿@using BlazorServerUI.Data
-@using DataAccess.dbo.Data
-@using DataAccess.dbo.Models
-
-@inject IUserService userService
+﻿@inject IUserService userService
 
 <EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
     <DataAnnotationsValidator />

@@ -1,7 +1,4 @@
-﻿using DataAccess.dbo.Models;
-using System.ComponentModel.DataAnnotations;
-
-namespace BlazorServerUI.Data;
+﻿namespace BlazorServerUI.Data;
 
 public class DisplayUserModel : IUserModel
 {

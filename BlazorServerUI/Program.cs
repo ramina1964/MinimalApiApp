@@ -1,11 +1,7 @@
-using BlazorServerUI.Data;
-using DataAccess.dbo.Data;
-using DataAccess.dbo.DbAccess;
-using DataAccess.dbo.Models;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Todo: Remove duplication of ConnectionStrings in appsettings.json by using the same property in appsettings.json of MinimalApi.
+// Todo: Add BlazorMud Nuget package and use it in this project.
 
 // Add services to the container.
 builder.Services.AddRazorPages();
