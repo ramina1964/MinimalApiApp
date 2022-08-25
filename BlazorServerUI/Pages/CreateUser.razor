@@ -12,29 +12,25 @@
             <DataAnnotationsValidator />
             <ValidationSummary />
 
-            <div>
+            <p>
                 <label>First Name</label>
                 <InputText class="form-control" @bind-Value="displayUser.FirstName" />
-            </div>
-            <br />
+            </p>
 
-            <div>
+            <p>
                 <label>Last Name</label>
                 <InputText class="form-control" @bind-Value="displayUser.LastName" />
-            </div>
-            <br />
+            </p>
 
-            <div>
+            <p>
                 <label>Date of Birth</label>
                 <InputDate class="form-control" @bind-Value="displayUser.DoB" />
-            </div>
-            <br />
+            </p>
 
-            <div>
+            <p>
                 <label>Email Address</label>
                 <InputText class="form-control" @bind-Value="displayUser.EmailAddress" />
-            </div>
-            <br />
+            </p>
 
             <button class="btn btn-primary" type="submit">Submit</button>
         </EditForm>
