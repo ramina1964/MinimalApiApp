@@ -8,7 +8,7 @@ public interface IUserModel
 
     string LastName { get; set; }
 
-    DateTime? DoB { get; set; }
+    DateTime DoB { get; set; }
 
     string? EmailAddress { get; set; }
 }

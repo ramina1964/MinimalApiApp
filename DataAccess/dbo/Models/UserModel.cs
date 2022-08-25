@@ -8,7 +8,7 @@ public class UserModel : IUserModel
 
     public string LastName { get; set; } = string.Empty;
 
-    public DateTime? DoB { get; set; }
+    public DateTime DoB { get; set; }
 
     public string? EmailAddress { get; set; }
 }
