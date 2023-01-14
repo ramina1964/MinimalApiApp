@@ -3,6 +3,6 @@
 AS
 begin
 	select [Id], [FirstName], [LastName], [DoB], [EmailAddress]
-    from dbo.[User]
+    from [dbo].[User]
     where Id = @Id;
 end

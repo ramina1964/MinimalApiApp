@@ -5,7 +5,7 @@
 	@EmailAddress nvarchar(50)
 AS
 begin
-    insert into dbo.[User]
+    insert into [dbo].[User]
     (FirstName, LastName, DoB, EmailAddress)
     values
     (@FirstName, @LastName, @DoB, @EmailAddress);

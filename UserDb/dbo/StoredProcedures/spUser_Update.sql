@@ -6,7 +6,7 @@
 	@EmailAddress nvarchar(50)
 AS
 begin
-    update dbo.[User]
+    update [dbo].[User]
     set
     FirstName = @FirstName,
     LastName = @LastName,
