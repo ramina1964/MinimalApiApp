@@ -1,5 +1,6 @@
 ﻿namespace MinimalAPI;
 
+// Todo: Make InsertUser and UpdateUser returning the new/updated user
 public static class Api
 {
     public static void ConfigureApi(this WebApplication app)
@@ -43,7 +44,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> InsertUser(IUserService data, UserModel user)
+    private static async Task<IResult> InsertUser(IUserService data, [FromBody] UserModel user)
     {
         try
         {
@@ -57,7 +58,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> UpdateUser(IUserService data, UserModel user)
+    private static async Task<IResult> UpdateUser(IUserService data, [FromBody] UserModel user)
     {
         try
         {

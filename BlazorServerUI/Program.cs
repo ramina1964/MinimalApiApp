@@ -1,7 +1,7 @@
 var builder = WebApplication.CreateBuilder(args);
 
 // Todo: Remove duplication of ConnectionStrings in secrets.json by using the same property in MinimalApi.appsettings.json.
-// Todo: Add BlazorMud Nuget package and use it in this project.
+// Todo: Add MudBlazor Nuget package and use it in this project.
 
 // Add services to the container.
 builder.Services.AddRazorPages();
