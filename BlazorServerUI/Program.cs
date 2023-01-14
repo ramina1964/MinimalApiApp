@@ -1,6 +1,6 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Todo: Remove duplication of ConnectionStrings in appsettings.json by using the same property in appsettings.json of MinimalApi.
+// Todo: Remove duplication of ConnectionStrings in secrets.json by using the same property in MinimalApi.appsettings.json.
 // Todo: Add BlazorMud Nuget package and use it in this project.
 
 // Add services to the container.
@@ -12,11 +12,9 @@ builder.Services.AddScoped<IUserModel, DisplayUserModel>();
 
 var app = builder.Build();
 
-// Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 

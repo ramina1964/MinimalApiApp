@@ -19,12 +19,13 @@ public static class Api
     {
         try
         {
-            return Results.Ok(await data.GetAll());
+            var output = await data.GetAll();
+            return Results.Ok(output);
         }
 
         catch (Exception ex)
         {
-            return Results.Problem($"A error occurred, see below:\n{ex.Message}");
+            return Results.Problem($"An error occurred, see below:\n{ex.Message}");
         }
     }
 
@@ -32,7 +33,8 @@ public static class Api
     {
         try
         {
-            return Results.Ok(await data.Get(id));
+            var output = await data.Get(id);
+            return Results.Ok(output);
         }
 
         catch (Exception ex)
@@ -45,7 +47,8 @@ public static class Api
     {
         try
         {
-            return Results.Ok(await data.InsertUser(user));
+            var output = await data.InsertUser(user);
+            return Results.Ok(output);
         }
 
         catch (Exception ex)
@@ -58,7 +61,8 @@ public static class Api
     {
         try
         {
-            return Results.Ok(await data.UpdateUser(user));
+            var output = await data.UpdateUser(user);
+            return Results.Ok(output);
         }
 
         catch (Exception ex)
@@ -71,7 +75,8 @@ public static class Api
     {
         try
         {
-            return Results.Ok(await data.DeleteUser(id));
+            var output = await data.DeleteUser(id);
+            return Results.Ok(output);
         }
 
         catch (Exception ex)
