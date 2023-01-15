@@ -2,7 +2,7 @@
 
 public interface IUserService
 {
-    Task<IEnumerable<UserModel>> GetAll();
+    Task<List<UserModel>> GetAll();
 
     Task<UserModel?> Get(int id);
 

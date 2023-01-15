@@ -15,7 +15,7 @@ public class DisplayUserModel : IUserModel
 
     [Required]
     [DataType(DataType.Date, ErrorMessage = "DoB must be inside the range [1753-01-01, 1999-12-31].")]
-    public DateTime DoB { get; set; }
+    public DateTime DoB { get; set; } = DateTime.Now;
 
     [EmailAddress]
     public string? EmailAddress { get; set; }

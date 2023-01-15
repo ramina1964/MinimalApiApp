@@ -1,6 +1,6 @@
 ﻿namespace MinimalAPI;
 
-// Todo: Make InsertUser and UpdateUser returning the new/updated user
+// Todo: Make InsertUser and UpdateUser return the new/updated user
 public static class Api
 {
     public static void ConfigureApi(this WebApplication app)
@@ -24,9 +24,9 @@ public static class Api
             return Results.Ok(output);
         }
 
-        catch (Exception ex)
+        catch (Exception)
         {
-            return Results.Problem($"An error occurred, see below:\n{ex.Message}");
+            return Results.Problem($"An error occurred!");
         }
     }
 
@@ -38,9 +38,9 @@ public static class Api
             return Results.Ok(output);
         }
 
-        catch (Exception ex)
+        catch (Exception)
         {
-            return Results.Problem(ex.Message);
+            return Results.Problem($"An error occurred!");
         }
     }
 
@@ -52,9 +52,9 @@ public static class Api
             return Results.Ok(output);
         }
 
-        catch (Exception ex)
+        catch (Exception)
         {
-            return Results.Problem(ex.Message);
+            return Results.Problem($"An error occurred!");
         }
     }
 
@@ -66,9 +66,9 @@ public static class Api
             return Results.Ok(output);
         }
 
-        catch (Exception ex)
+        catch (Exception)
         {
-            return Results.Problem(ex.Message);
+            return Results.Problem($"An error occurred!");
         }
     }
 
@@ -80,9 +80,9 @@ public static class Api
             return Results.Ok(output);
         }
 
-        catch (Exception ex)
+        catch (Exception)
         {
-            return Results.Problem(ex.Message);
+            return Results.Problem($"An error occurred!");
         }
     }
 }

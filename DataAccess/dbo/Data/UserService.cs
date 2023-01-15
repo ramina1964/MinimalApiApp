@@ -4,7 +4,7 @@ public class UserService : IUserService
 {
     public UserService(ISqlDataAccess db) => _db = db;
 
-    public Task<IEnumerable<UserModel>> GetAll() =>
+    public Task<List<UserModel>> GetAll() =>
         _db.LoadData<UserModel, dynamic>(
             storedProcedure: "spUser_GetAll",
             parameters: new { });
@@ -63,6 +63,7 @@ public class UserService : IUserService
         return noOfRows;
     }
 
+    // Todo: Give a message about the deleted user.
     public async Task<int> DeleteUser(int userId)
     {
         if (userId <= 0)
