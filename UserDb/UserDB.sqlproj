@@ -71,4 +71,7 @@
   <ItemGroup>
     <None Include="MinimalApiDemoDb.publish.xml" />
   </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment.sql" />
+  </ItemGroup>
 </Project>
