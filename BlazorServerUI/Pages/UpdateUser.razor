@@ -1,35 +1,35 @@
 ﻿@inject IUserService userService
 
-<EditForm Model="@user" OnValidSubmit="HandleValidSubmit">
+<EditForm Model="@_user" OnValidSubmit="HandleValidSubmit" >
     <DataAnnotationsValidator />
     <ValidationSummary />
 
     <div>
         <label class="col-form-label">Id</label>
-        <span>@user.Id</span>
+        <span>@_user.Id</span>
     </div>
 
     <div>
         <label class="col-form-label">First Name</label>
-        <InputText class="form-control" @bind-Value="user.FirstName" />
+        <InputText class="form-control" @bind-Value="_user.FirstName" />
     </div>
     <br />
 
     <div>
         <label class="col-form-label">Last Name</label>
-        <InputText class="form-control" @bind-Value="user.LastName"/>
+        <InputText class="form-control" @bind-Value="_user.LastName"/>
     </div>
     <br />
 
     <div>
         <label class="col-form-label">Date of Birth</label>
-        <InputDate class="form-control" @bind-Value="user.DoB"/>
+        <InputDate class="form-control" @bind-Value="_user.DoB"/>
     </div>
     <br />
 
     <div>
         <label class="col-form-label">Email Address</label>
-        <InputText class="form-control" @bind-Value="user.EmailAddress"/>
+        <InputText class="form-control" @bind-Value="_user.EmailAddress"/>
     </div>
     <br />
 
@@ -37,36 +37,3 @@
 
 </EditForm>
 
-@code {
-
-    [Parameter]
-    public int Id { get; set; }
-
-    [Parameter]
-    public EventCallback<IUserModel> OnUpdate { get; set; }
-
-    protected override async Task OnParametersSetAsync()
-    {
-        var u = await userService.Get(Id);
-        if (u is not null)
-        {
-            user.Id = u.Id;
-            user.FirstName = u.FirstName;
-            user.LastName = u.LastName;
-            user.DoB = u.DoB;
-            user.EmailAddress = u.EmailAddress;
-        }
-    }
-
-    private async Task HandleValidSubmit()
-    {
-        // Update user in the database, without a round trip.
-        await userService.UpdateUser(user);
-
-        // Also Update the UI.
-        await OnUpdate.InvokeAsync(user);
-    }
-
-    //private IUserModel user = new DisplayUserModel();
-    private DisplayUserModel user = new DisplayUserModel();
-}

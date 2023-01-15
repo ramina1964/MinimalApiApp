@@ -8,42 +8,31 @@
 <div class="row">
     <div class="col-md-4">
 
-        <EditForm Model="displayUser" OnValidSubmit="HandleValidSubmit">
+        <EditForm Model="_displayUser" OnValidSubmit="HandleValidSubmit">
             <DataAnnotationsValidator />
             <ValidationSummary />
 
             <p>
                 <label>First Name</label>
-                <InputText class="form-control" @bind-Value="displayUser.FirstName" />
+                <InputText class="form-control" @bind-Value="_displayUser.FirstName" />
             </p>
 
             <p>
                 <label>Last Name</label>
-                <InputText class="form-control" @bind-Value="displayUser.LastName" />
+                <InputText class="form-control" @bind-Value="_displayUser.LastName" />
             </p>
 
             <p>
                 <label>Date of Birth</label>
-                <InputDate class="form-control" @bind-Value="displayUser.DoB" />
+                <InputDate class="form-control" @bind-Value="_displayUser.DoB" />
             </p>
 
             <p>
                 <label>Email Address</label>
-                <InputText class="form-control" @bind-Value="displayUser.EmailAddress" />
+                <InputText class="form-control" @bind-Value="_displayUser.EmailAddress" />
             </p>
 
             <button class="btn btn-primary" type="submit">Submit</button>
         </EditForm>
     </div>
 </div>
-
-@code {
-
-    private async Task HandleValidSubmit()
-    {
-        await dataservice.InsertUser(displayUser);
-        displayUser = new DisplayUserModel();
-    }
-
-    private IUserModel displayUser = new DisplayUserModel();
-}
