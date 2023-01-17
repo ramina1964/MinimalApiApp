@@ -1,6 +1,6 @@
 ﻿namespace MinimalAPI;
 
-// Todo: Make InsertUser and UpdateUser return the new/updated user
+// Todo: Review Exception Handling in this project
 public static class Api
 {
     public static void ConfigureApi(this WebApplication app)

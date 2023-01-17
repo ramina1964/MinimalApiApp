@@ -1,5 +1,6 @@
 ﻿namespace DataAccess.dbo.Data;
 
+// Todo: Review Exception Handling in this project
 public class UserService : IUserService
 {
     public UserService(ISqlDataAccess db) => _db = db;
@@ -23,7 +24,6 @@ public class UserService : IUserService
         return result.FirstOrDefault();
     }
 
-    // Todo: Throw ArgumentException() if user data is invalid.
     public async Task<int> InsertUser(IUserModel user)
     {
         var userId = user.Id;
@@ -45,7 +45,6 @@ public class UserService : IUserService
         return noOfRows;
     }
 
-    // Todo: Throw ArgumentException() if user data is invalid.
     public async Task<int> UpdateUser(IUserModel user)
     {
         var userId = user.Id;
@@ -63,7 +62,6 @@ public class UserService : IUserService
         return noOfRows;
     }
 
-    // Todo: Give a message about the deleted user.
     public async Task<int> DeleteUser(int userId)
     {
         if (userId <= 0)
