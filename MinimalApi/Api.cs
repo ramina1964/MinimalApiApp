@@ -1,4 +1,4 @@
-﻿namespace MinimalAPI;
+﻿namespace MinimalApi;
 
 // Todo: Review Exception Handling in this project
 public static class Api
@@ -80,9 +80,9 @@ public static class Api
             return Results.Ok(output);
         }
 
-        catch (Exception)
+        catch (Exception ex)
         {
-            return Results.Problem($"An error occurred!");
+            return Results.Problem($"An error occurred!", ex.Message);
         }
     }
 }

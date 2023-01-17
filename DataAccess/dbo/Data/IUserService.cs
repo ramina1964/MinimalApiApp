@@ -10,5 +10,5 @@ public interface IUserService
 
     Task<UserModel?> UpdateUser(IUserModel user);
 
-    Task<int> DeleteUser(int id);
+    Task<UserModel?> DeleteUser(int id);
 }

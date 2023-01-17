@@ -61,23 +61,25 @@ public class UserService : IUserService
         return updatedModel;
     }
 
-    public async Task<int> DeleteUser(int userId)
+    public async Task<UserModel?> DeleteUser(int userId)
     {
         if (userId <= 0)
             throw new ArgumentException(
                 message: "Argument must be greater than zero.",
                 paramName: $"{nameof(userId)}: {userId}");
 
-        var noOfRows = await _db.SaveData(
-            storedProcedure: "spUser_Delete",
-            new { Id = userId });
+        var deleted = (await _db.LoadData<UserModel, dynamic>(
+            "spUser_GetAll", new { }))
+            .FirstOrDefault();
 
-        if (noOfRows <= 0)
+        if (deleted == null)
             throw new ArgumentException(
                 message: "No user found with the given user id.",
                 paramName: $"{nameof(userId)}: {userId}");
 
-        return noOfRows;
+        _ = await _db.SaveData("spUser_Delete", new { Id = userId });
+
+        return deleted;
     }
 
     private readonly ISqlDataAccess _db;
