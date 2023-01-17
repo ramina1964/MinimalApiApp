@@ -5,9 +5,9 @@ public static class Api
 {
     public static void ConfigureApi(this WebApplication app)
     {
-        app.MapGet("/Users", GetAllUsers);
+        app.MapGet("/Users", GetAll);
 
-        app.MapGet("/Users/{id}", GetUser);
+        app.MapGet("/Users/{id}", Get);
 
         app.MapPost("/Users", InsertUser);
 
@@ -16,7 +16,7 @@ public static class Api
         app.MapDelete("/Users", DeleteUser);
     }
 
-    private static async Task<IResult> GetAllUsers(IUserService data)
+    private static async Task<IResult> GetAll(IUserService data)
     {
         try
         {
@@ -30,7 +30,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> GetUser(IUserService data, int id)
+    private static async Task<IResult> Get(IUserService data, int id)
     {
         try
         {
