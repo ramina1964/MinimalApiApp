@@ -12,11 +12,6 @@ public class UserService : IUserService
 
     public async Task<UserModel?> Get(int userId)
     {
-        if (userId <= 0)
-            throw new ArgumentException(
-                message: "User Id must be a positive integer.",
-                paramName: $"{nameof(userId)}: {userId}");
-
         var result = await _db.LoadData<UserModel, dynamic>(
             storedProcedure: "spUser_Get",
             parameters: new { Id = userId });
@@ -26,19 +21,9 @@ public class UserService : IUserService
 
     public async Task<UserModel?> InsertUser(IUserModel user)
     {
-        var results = await _db.LoadData<UserModel, dynamic>(
-            storedProcedure: "spUser_Insert",
-            parameters:
-            new
-            {
-                user.Id,
-                user.FirstName,
-                user.LastName,
-                user.DoB,
-                user.EmailAddress
-            });
-
-        var createdModel = results.FirstOrDefault();
+        var createdModel =
+            (await _db.LoadData<UserModel, dynamic>(storedProcedure: "spUser_Insert", parameters: user))
+            .FirstOrDefault();
 
         if (createdModel == null)
             throw new ArgumentException(
@@ -50,8 +35,9 @@ public class UserService : IUserService
 
     public async Task<UserModel?> UpdateUser(IUserModel user)
     {
-        var results = await _db.LoadData<UserModel, dynamic>("spUser_Update", user);
-        var updatedModel = results.FirstOrDefault();
+        var updatedModel =
+            (await _db.LoadData<UserModel, dynamic>("spUser_Update", user))
+            .FirstOrDefault();
 
         if (updatedModel == null)
             throw new ArgumentException(
