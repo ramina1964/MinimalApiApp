@@ -1,6 +1,6 @@
-﻿if not exists (select 1 from dbo.[User])
+﻿if not exists (select 1 from [dbo].[User])
 begin
-    insert into dbo.[User]
+    insert into [dbo].[User]
     (FirstName, LastName, DoB, EmailAddress)
     values
     ('Ramin', 'Anvar', '1964-08-10', 'lion@gmail.com'),

@@ -6,9 +6,9 @@ public interface IUserService
 
     Task<UserModel?> Get(int id);
 
-    Task<int> InsertUser(IUserModel user);
+    Task<UserModel?> InsertUser(IUserModel user);
 
-    Task<int> UpdateUser(IUserModel user);
+    Task<UserModel?> UpdateUser(IUserModel user);
 
     Task<int> DeleteUser(int id);
 }

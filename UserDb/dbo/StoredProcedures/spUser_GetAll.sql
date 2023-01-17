@@ -1,5 +1,5 @@
-﻿CREATE PROCEDURE [dbo].[spUser_GetAll]
-AS
+﻿create procedure [dbo].[spUser_GetAll]
+as
 begin
 	select [Id], [FirstName], [LastName], [DoB], [EmailAddress]
     from [dbo].[User];

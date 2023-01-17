@@ -24,42 +24,41 @@ public class UserService : IUserService
         return result.FirstOrDefault();
     }
 
-    public async Task<int> InsertUser(IUserModel user)
+    public async Task<UserModel?> InsertUser(IUserModel user)
     {
-        var userId = user.Id;
-
-        if (user.Id != 0)
-            throw new ArgumentException(
-                message: "Argument must be zero or non-existent.",
-                paramName: $"{nameof(userId)}: {userId}");
-
-        var noOfRows = await _db.SaveData(
+        var results = await _db.LoadData<UserModel, dynamic>(
             storedProcedure: "spUser_Insert",
-            parameters: new { user.FirstName, user.LastName, user.DoB, user.EmailAddress });
+            parameters:
+            new
+            {
+                user.Id,
+                user.FirstName,
+                user.LastName,
+                user.DoB,
+                user.EmailAddress
+            });
 
-        if (noOfRows <= 0)
+        var createdModel = results.FirstOrDefault();
+
+        if (createdModel == null)
             throw new ArgumentException(
                 message: "User data is not correctly formatted.",
                 paramName: $"{nameof(user)}: {user}");
 
-        return noOfRows;
+        return createdModel;
     }
 
-    public async Task<int> UpdateUser(IUserModel user)
+    public async Task<UserModel?> UpdateUser(IUserModel user)
     {
-        var userId = user.Id;
-        if (user.Id <= 0)
-            throw new ArgumentException(
-                message: "Argument must be greater than zero.",
-                paramName: $"{nameof(userId)}: {userId}");
+        var results = await _db.LoadData<UserModel, dynamic>("spUser_Update", user);
+        var updatedModel = results.FirstOrDefault();
 
-        var noOfRows = await _db.SaveData("spUser_Update", user);
-        if (noOfRows <= 0)
+        if (updatedModel == null)
             throw new ArgumentException(
                 message: "User data is not correctly formatted.",
                 paramName: $"{nameof(user)}: {user}");
 
-        return noOfRows;
+        return updatedModel;
     }
 
     public async Task<int> DeleteUser(int userId)

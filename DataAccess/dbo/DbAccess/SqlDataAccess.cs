@@ -26,10 +26,12 @@ public class SqlDataAccess : ISqlDataAccess
     {
         var connectionString = _config.GetConnectionString(connectionId);
         using IDbConnection connection = new SqlConnection(connectionString);
-        return await connection.ExecuteAsync(
+        var output = await connection.ExecuteAsync(
                sql: storedProcedure,
                param: parameters,
                commandType: CommandType.StoredProcedure);
+
+        return output;
     }
 
     private readonly IConfiguration _config;
