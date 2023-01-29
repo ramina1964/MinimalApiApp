@@ -1,9 +1,9 @@
 ﻿namespace DataAccess.dbo.Data;
 
 // Todo: Review Exception Handling in this project
-public class UserService : IUserService
+public class UserData : IUserData
 {
-    public UserService(ISqlDataAccess db) => _db = db;
+    public UserData(ISqlDataAccess db) => _db = db;
 
     public Task<List<UserModel>> GetAll() =>
         _db.LoadData<UserModel, dynamic>(
@@ -22,7 +22,9 @@ public class UserService : IUserService
     public async Task<UserModel?> InsertUser(IUserModel user)
     {
         var createdModel =
-            (await _db.LoadData<UserModel, dynamic>(storedProcedure: "spUser_Insert", parameters: user))
+            (await _db.LoadData<UserModel, dynamic>(
+                storedProcedure: "spUser_Insert",
+                parameters: user))
             .FirstOrDefault();
 
         if (createdModel == null)
@@ -36,7 +38,9 @@ public class UserService : IUserService
     public async Task<UserModel?> UpdateUser(IUserModel user)
     {
         var updatedModel =
-            (await _db.LoadData<UserModel, dynamic>("spUser_Update", user))
+            (await _db.LoadData<UserModel, dynamic>(
+                "spUser_Update",
+                user))
             .FirstOrDefault();
 
         if (updatedModel == null)
