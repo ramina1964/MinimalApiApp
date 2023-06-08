@@ -1,6 +1,6 @@
 ﻿namespace DataAccess.dbo.Data;
 
-public interface IUserService
+public interface IUserData
 {
     Task<List<UserModel>> GetAll();
 
