@@ -1,9 +1,9 @@
 ﻿namespace DataAccess.dbo.Data;
 
 // Todo: Review Exception Handling in this project
-public class UserData : IUserData
+public class UserService : IUserService
 {
-    public UserData(ISqlDataAccess db) => _db = db;
+    public UserService(ISqlDataAccess db) => _db = db;
 
     public Task<List<UserModel>> GetAll() =>
         _db.LoadData<UserModel, dynamic>(

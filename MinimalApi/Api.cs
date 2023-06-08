@@ -16,7 +16,7 @@ public static class Api
         app.MapDelete("/Users", DeleteUser);
     }
 
-    private static async Task<IResult> GetAll(IUserData data)
+    private static async Task<IResult> GetAll(IUserService data)
     {
         try
         {
@@ -30,7 +30,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> Get(IUserData data, int id)
+    private static async Task<IResult> Get(IUserService data, int id)
     {
         try
         {
@@ -44,7 +44,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> InsertUser(IUserData data, [FromBody] UserModel user)
+    private static async Task<IResult> InsertUser(IUserService data, [FromBody] UserModel user)
     {
         try
         {
@@ -58,7 +58,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> UpdateUser(IUserData data, [FromBody] UserModel user)
+    private static async Task<IResult> UpdateUser(IUserService data, [FromBody] UserModel user)
     {
         try
         {
@@ -72,7 +72,7 @@ public static class Api
         }
     }
 
-    private static async Task<IResult> DeleteUser(IUserData data, int id)
+    private static async Task<IResult> DeleteUser(IUserService data, int id)
     {
         try
         {

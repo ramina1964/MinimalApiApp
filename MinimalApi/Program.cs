@@ -1,9 +1,11 @@
+using DataAccess.dbo.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();
-builder.Services.AddTransient<IUserData, UserData>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 var app = builder.Build();
 
