@@ -1,6 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Todo: Consider removal of ConnectionStrings duplication in BlazorServerUI/secrets.json and MinimalApi/secrets.json
 // Todo: Add MudBlazor Nuget package and use it in this project.
 
 // Add services to the container.

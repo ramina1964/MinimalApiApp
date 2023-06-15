@@ -1,5 +1,3 @@
-using DataAccess.dbo.Data;
-
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddEndpointsApiExplorer();
