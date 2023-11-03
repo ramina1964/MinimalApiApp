@@ -14,6 +14,6 @@ begin
     values
     (@FirstName, @LastName, @DoB, @EmailAddress);
 
-	set @Id = SCOPE_IDENTITY()
+	set @Id = SCOPE_IDENTITY();
 	select @Id;
 end

@@ -2,6 +2,8 @@
 	@Id int
 AS
 begin
+    set nocount on;
+
     delete from [dbo].[User]
     where Id = @Id;
 end

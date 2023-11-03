@@ -1,5 +1,8 @@
 var builder = WebApplication.CreateBuilder(args);
 
+// Load configuration from appsettings.json
+builder.Configuration.AddJsonFile("appsettings.json");
+
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddTransient<ISqlDataAccess, SqlDataAccess>();

@@ -1,4 +1,7 @@
-var builder = WebApplication.CreateBuilder(args);
+  var builder = WebApplication.CreateBuilder(args);
+
+// Load configuration from appsettings.json
+builder.Configuration.AddJsonFile("appsettings.json");
 
 // Todo: Add MudBlazor Nuget package and use it in this project.
 

@@ -6,6 +6,8 @@
 	@EmailAddress nvarchar(50)
 as
 begin
+	set nocount on;
+
     update [dbo].[User]
     set
     FirstName = @FirstName,
